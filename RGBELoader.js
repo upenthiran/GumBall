@@ -1,13 +1,13 @@
 import { RGBELoader } from 'three/addon/loaders/RGBELoader.js';
-export function CreateHDR(THREE ,scene,URL ){
+export function CreateHDR(URL ){
     new RGBELoader()
 
     .load( URL, function ( texture ) {
 
-        texture.mapping = THREE.EquirectangularReflectionMapping;
+        texture.mapping =  window.threeCore.THREE.EquirectangularReflectionMapping;
 
-        scene.background = texture;
-        scene.environment = texture;
+        window.threeCore.scene.background = texture;
+        window.threeCore.scene.environment = texture;
 
         window.RenderFrame;
     } );

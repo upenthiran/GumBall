@@ -7,9 +7,11 @@ import { OrbitControls } from 'three/addon/controls/OrbitControls.js';
 import Stats from 'https://unpkg.com/three@0.146.0/examples/jsm/libs/stats.module.js';
 const stats = new Stats();
 const clock = new THREE.Clock();
+window.threeCore ={}
+window.threeCore.THREE=THREE;
 
-export const MixerList=[];
-let camera, scene, renderer,controls ;
+window.threeCore.MixerList=[];
+
 
 
 			init();
@@ -20,26 +22,26 @@ let camera, scene, renderer,controls ;
 				const container = document.createElement( 'div' );
 				document.body.appendChild( container );
 
-				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 20 );
-				camera.position.set( - 1.8, 0.6, 2.7 );
+				threeCore.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 20 );
+				threeCore.camera.position.set( - 1.8, 0.6, 2.7 );
 
-				scene = new THREE.Scene();
+				threeCore.scene = new THREE.Scene();
                 
 
-				renderer = new THREE.WebGLRenderer( { antialias: true } );
-				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( window.innerWidth, window.innerHeight );
-				renderer.toneMapping = THREE.ACESFilmicToneMapping;
-				renderer.toneMappingExposure = 1;
-				renderer.outputEncoding = THREE.sRGBEncoding;
-				container.appendChild( renderer.domElement );
+				threeCore.renderer = new THREE.WebGLRenderer( { antialias: true } );
+				threeCore.renderer.setPixelRatio( window.devicePixelRatio );
+				threeCore.renderer.setSize( window.innerWidth, window.innerHeight );
+				threeCore.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+				threeCore.renderer.toneMappingExposure = 1;
+				threeCore.renderer.outputEncoding = THREE.sRGBEncoding;
+				container.appendChild( threeCore.renderer.domElement );
 
-				 controls = new OrbitControls( camera, renderer.domElement );
-				controls.addEventListener( 'change', render ); // use if there is no animation loop
-				controls.minDistance = 2;
-				controls.maxDistance = 10;
-				controls.target.set( 0, 1, - 0.2 );
-				controls.update();
+				threeCore.controls = new OrbitControls(  window.threeCore.camera,  window.threeCore.renderer.domElement );
+				threeCore.controls.addEventListener( 'change', render ); // use if there is no animation loop
+				threeCore.controls.minDistance = 2;
+				threeCore.controls.maxDistance = 10;
+				threeCore.controls.target.set( 0, 1, - 0.2 );
+				threeCore.controls.update();
 
                
             
@@ -55,22 +57,22 @@ export function animate( ) {
 
 				const delta = clock.getDelta();
 
-                for ( const mixer of MixerList ) mixer.update( delta );
+                for ( const mixer of threeCore.MixerList ) mixer.update( delta );
 
-				controls.update();
+				threeCore.controls.update();
 
-				stats.update();
+			//	stats.update();
 
-				renderer.render( scene, camera );
+				threeCore.renderer.render(  threeCore.scene,  threeCore.camera );
 
 }
 
 			function onWindowResize() {
 
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
+				threeCore.camera.aspect = window.innerWidth / window.innerHeight;
+				threeCore.camera.updateProjectionMatrix();
 
-				renderer.setSize( window.innerWidth, window.innerHeight );
+				threeCore.renderer.setSize( window.innerWidth, window.innerHeight );
 
 				render();
 
@@ -79,9 +81,9 @@ export function animate( ) {
 
      		function render() {
 
-				renderer.render( scene, camera );
+				window.threeCore.renderer.render(  window.threeCore.scene,  window.threeCore.camera );
 
 			}
-
+			var animateTime =animate( );
 			var RenderFrame = render();
-    export{THREE,camera, scene, renderer,controls}
+    //export{THREE,camera, scene, renderer,controls}
