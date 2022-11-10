@@ -26,6 +26,7 @@ window.threeCore.MixerList=[];
 				threeCore.camera.position.set( - 1.8, 0.6, 2.7 );
 
 				threeCore.scene = new THREE.Scene();
+				threeCore.scene.fog = new THREE.Fog( 0xa0a0a0, 10, 500 );
                 
 
 				threeCore.renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -61,7 +62,7 @@ export function animate( ) {
 
 				threeCore.controls.update();
 
-			//	stats.update();
+				stats.update();
 
 				threeCore.renderer.render(  threeCore.scene,  threeCore.camera );
 
@@ -74,7 +75,7 @@ export function animate( ) {
 
 				threeCore.renderer.setSize( window.innerWidth, window.innerHeight );
 
-				render();
+			//	render();
 
 			}
 

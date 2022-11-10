@@ -30,8 +30,13 @@ export async function LoadAnimated( URL,pos=[0,0,0]){
         window.RenderFrame;
       
         
-    } );
+    },
+    function ( xhr ) {
+
+		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+	}, );
 
    
-   ;
+   
 }
