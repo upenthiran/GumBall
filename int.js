@@ -26,7 +26,7 @@ window.threeCore.MixerList=[];
 				threeCore.camera.position.set( - 1.8, 0.6, 2.7 );
 
 				threeCore.scene = new THREE.Scene();
-				threeCore.scene.fog = new THREE.Fog( 0xa0a0a0, 10, 500 );
+
                 
 
 				threeCore.renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -35,12 +35,16 @@ window.threeCore.MixerList=[];
 				threeCore.renderer.toneMapping = THREE.ACESFilmicToneMapping;
 				threeCore.renderer.toneMappingExposure = 1;
 				threeCore.renderer.outputEncoding = THREE.sRGBEncoding;
+				threeCore.renderer.shadowMap.enabled = true;
+				threeCore.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 				container.appendChild( threeCore.renderer.domElement );
 
 				threeCore.controls = new OrbitControls(  window.threeCore.camera,  window.threeCore.renderer.domElement );
 				threeCore.controls.addEventListener( 'change', render ); // use if there is no animation loop
 				threeCore.controls.minDistance = 2;
 				threeCore.controls.maxDistance = 10;
+				
+				threeCore.controls.maxPolarAngle = Math.PI / 2;
 				threeCore.controls.target.set( 0, 1, - 0.2 );
 				threeCore.controls.update();
 

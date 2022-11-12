@@ -11,15 +11,26 @@ export function LoadStatic(URL){
 
     } );
 }
-export async function LoadAnimated( URL,pos=[0,0,0]){
+export async function LoadAnimated( URL,pos=[0,0,0],castShadow =true){
    
     let loader = await new GLTFLoader();
     loader.load( URL, function ( gltf ) {
-
        const model =  gltf.scene;
+      
+       model.traverse( function ( object ) {
+
+        if ( object.isMesh )
+         {
+            object.castShadow = true;
+            console.log("boj shadow : "+  object.castShadow);
+        }
+
+    } );
+
+       
        model.position.set(pos[0],pos[1],pos[2]);
         
-       window.threeCore.scene.add( gltf.scene );
+       window.threeCore.scene.add( model );
        
 
         
