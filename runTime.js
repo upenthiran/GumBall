@@ -1,14 +1,15 @@
-import './int.js';
-import * as RGBLoader from './RGBELoader.js';
-import * as GLTFLOADER from './GLTFLoader.js';
-import * as GEO from './Geometry.js';
+import * as int from'./Lib/int.js';
+import * as RGBLoader from './Lib/RGBELoader.js';
+import * as GLTFLOADER from './Lib/GLTFLoader.js';
+import * as GEO from './Lib/Geometry.js';
 
 //Create a WebGLRenderer and turn on shadows in the renderer
 
 
-
+int.CreateOrbitCamera();
 
 RGBLoader.CreateHDR('hdr/studio.hdr');
+
 const hemiLight = new window.threeCore.THREE.HemisphereLight( 0xffffff, 0x444444 );
 hemiLight.position.set( 0, 20, 0 );
 window.threeCore.scene.add( hemiLight );
@@ -26,9 +27,7 @@ window.threeCore.scene.add( dirLight );
 
 //window.threeCore.scene.add(GEO.CreatePolyCircle({radius:5}));
  
-const mesh = new window.threeCore.THREE.Mesh( new window.threeCore.THREE.PlaneGeometry( 100, 100 ), new window.threeCore.THREE.MeshPhongMaterial( { color: 0x999999, depthWrite: false } ) );
-				mesh.rotation.x = - Math.PI / 2;
-				mesh.receiveShadow = true;
+const mesh = GEO.CreateGroundPlan();
 				window.threeCore.scene.add( mesh );
 
 
