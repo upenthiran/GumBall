@@ -15,12 +15,16 @@ window.threeCore.MixerList=[];
 
 
 			init();
-			render();
+			//render();
+			window.RenderFrame
 
 function init() {
 
-				const container = document.createElement( 'div' );
+			
+				const NextBUT = document.createElement( 'button' );
 				document.body.appendChild( container );
+
+
 
 				
 				CreateScene();
@@ -29,11 +33,6 @@ function init() {
 			
 				container.appendChild( threeCore.renderer.domElement );
 				//CreateOrbitCamera();
-				
-
-               
-            
-
 				window.addEventListener( 'resize', onWindowResize );
 
 			}
@@ -45,8 +44,8 @@ function init() {
    }
    function CreateCamera()
    {
-	threeCore.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 20 );
-				threeCore.camera.position.set( - 1.8, 0.6, 2.7 );
+	threeCore.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 30 );
+				threeCore.camera.position.set( - 1.8, 6, 12 );
    }
    function CreateRender()
    {
@@ -63,11 +62,11 @@ function init() {
    {
 	threeCore.controls = new OrbitControls(  window.threeCore.camera,  window.threeCore.renderer.domElement );
 				threeCore.controls.addEventListener( 'change', render ); // use if there is no animation loop
-				threeCore.controls.minDistance = 2;
-				threeCore.controls.maxDistance = 10;
+				threeCore.controls.minDistance = 10;
+				threeCore.controls.maxDistance = 15;
 				
 				threeCore.controls.maxPolarAngle = Math.PI / 2;
-				threeCore.controls.target.set( 0, 1, - 0.2 );
+				threeCore.controls.target.set( 0, 3, 0);
 				threeCore.controls.update();
    }
 			

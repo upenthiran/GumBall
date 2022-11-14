@@ -22,6 +22,7 @@ export async function LoadAnimated( URL,pos=[0,0,0],castShadow =true){
         if ( object.isMesh )
          {
             object.castShadow = true;
+            object.receiveShadow = true;
             console.log("boj shadow : "+  object.castShadow);
         }
 
@@ -33,10 +34,13 @@ export async function LoadAnimated( URL,pos=[0,0,0],castShadow =true){
        window.threeCore.scene.add( model );
        
 
-        
+       if(gltf.animations. length>=1){
       let  mixer =  new window.threeCore.THREE.AnimationMixer( gltf.scene );
+      
         mixer.clipAction( gltf.animations[ 0 ] ).play();
         threeCore.MixerList.push(mixer);
+      }
+        
         
         window.RenderFrame;
       
