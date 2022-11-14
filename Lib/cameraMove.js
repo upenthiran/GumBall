@@ -11,8 +11,10 @@ export function cameraAnimate() {
 export function MaincameraAnimation(_pos)
 {
     pos =_pos;
+   window.threeCore.controls.target.set(_pos);
+
     
-cameraAnimate()
+
 
 
 }
