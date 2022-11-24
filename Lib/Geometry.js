@@ -6,9 +6,9 @@ circle.rotation.x = - Math.PI / 2;
 circle.receiveShadow = true;
  return circle;
 }
-export function CreateGroundPlan(size_x=100,size_y=100)
+export function CreateGroundPlan(size_x=5000,size_y=5000)
 {
-    const mesh = new window.threeCore.THREE.Mesh( new window.threeCore.THREE.PlaneGeometry( size_x,size_y ), new window.threeCore.THREE.MeshPhongMaterial( { color: 0x999999, depthWrite: false } ) );
+    const mesh = new window.threeCore.THREE.Mesh( new window.threeCore.THREE.PlaneGeometry( size_x,size_y ), new window.threeCore.THREE.MeshStandardMaterial( { color: new threeCore.THREE.Color( "hsl(238, 47%, 30%)"),roughness :1, depthWrite: false } ) );
 				mesh.rotation.x = - Math.PI / 2;
 				mesh.receiveShadow = true;
                 return mesh;
