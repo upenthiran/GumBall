@@ -70,7 +70,7 @@ export async function LoadSLid( URL,castShadow =true){
        {
           object.castShadow = true;
           object.receiveShadow = true;
-          console.log("boj shadow : "+  object.castShadow);
+          
       }
 
   } );
