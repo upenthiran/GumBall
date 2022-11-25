@@ -32,7 +32,7 @@ export function PPVFX_Bloom(edit =false){
 if(edit){
     const params = {
         exposure: 1,
-        bloomStrength: 1.5,
+        bloomStrength: 1.8,
         bloomThreshold: 0,
         bloomRadius: 0
     };
@@ -84,15 +84,15 @@ export function PPVFX_SAO(edit=false)
         gui.add( saoPass.params, 'saoBlurDepthCutoff', 0.0, 0.1 );
     }else{
  //saoPass.params.output =SAOPass.OUTPUT.SAO;
-  saoPass.params.saoBias = 0.4;
-  saoPass.params.saoIntensity = 0.01;
+  saoPass.params.saoBias = 0.5;
+  saoPass.params.saoIntensity = 0.02;
   saoPass.params.saoScale =2;
   saoPass.params.saoKernelRadius = 90;
   saoPass.params.saoMinResolution =0.025;
   saoPass.params.saoBlur = true;
   saoPass.params.saoBlurRadius =15;
   saoPass.params.saoBlurStdDev = 10;
-  saoPass.params.saoBlurDepthCutoff = 0.01; 
+  saoPass.params.saoBlurDepthCutoff = 0.001; 
     }
    
     

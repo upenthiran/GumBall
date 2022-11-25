@@ -2,26 +2,26 @@ export function CreateHemiLight()
 {
     const hemiLight = new window.threeCore.THREE.HemisphereLight( 0x6FD8FF, 0x444444 );
 hemiLight.position.set( 0, 30,30 );
-hemiLight.intensity =(0.9);
+hemiLight.intensity =(0.87);
 return  hemiLight;
 }
 
-export function CreateDirectionalLight(pos={x:1, y:1, z:1},color=0xffff,intensity=0.25){
+export function CreateDirectionalLight(pos={x:1, y:1, z:1},color=0xffff,intensity=0.75){
     const dirLight = new window.threeCore.THREE.DirectionalLight(color);
     const params = { 
         'intensity': intensity,
         'castShadow': true,
         'near': 0.1,
         'far': 500,
-        'right': 17,
-        'left': -17,
-        'top': 17,
-        'bottom': -17,
+        'right': 30,
+        'left': -30,
+        'top': 30,
+        'bottom': -30,
         'width': 512,
         'height': 512,
-        'radius': 100,
-        'blurSamples':1,
-        'bias': - 0.0005,
+        'radius': 1,
+        'blurSamples':0,
+        'bias': 0,
      };
     let DIrectionalLightObjectr ={'light':dirLight,'para':params};
 

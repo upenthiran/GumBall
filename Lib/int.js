@@ -48,7 +48,7 @@ function init() {
    }
    function CreateCamera()
    {
-	threeCore.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 120 );
+	threeCore.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 220 );
 				threeCore.camera.position.set( - 1.8, 20, 40 );
 				
 			//	threeCore.scene.fog = new THREE.Fog( new THREE.Color("hsl(238, 57%, 10%)"),90, 100 );

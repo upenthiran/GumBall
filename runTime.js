@@ -22,7 +22,7 @@ RGBLoader.CreateHDR({URL:'hdr/blueSky.hdr'});
 const hemiLight = Lights.CreateHemiLight();
 window.threeCore.scene.add( hemiLight );
 
-const dirLight = Lights.CreateDirectionalLight( {x:-3.5,y:3,z:-1}, 0xeeeeee,0.1);
+const dirLight = Lights.CreateDirectionalLight( {x:-3.5,y:3,z:-1}, 0xeeeeee,0.8);
 //const dirLight0 = Lights.CreateDirectionalLight({x:0,y:2,z:0},0xDABDFC);
 window.threeCore.scene.add( dirLight );
 PPVFX.PPVFX_Bloom();
