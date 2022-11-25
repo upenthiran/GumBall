@@ -43,13 +43,13 @@ function init() {
    {
 	threeCore.scene = new THREE.Scene();
 	
-	threeCore.scene.background = new threeCore.THREE.Color( 0.05, 0.05, 0.3 );
+	//threeCore.scene.background = new threeCore.THREE.Color( 0.05, 0.05, 0.3 );
 
    }
    function CreateCamera()
    {
 	threeCore.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 120 );
-				threeCore.camera.position.set( - 1.8, 20, 50 );
+				threeCore.camera.position.set( - 1.8, 20, 40 );
 				
 			//	threeCore.scene.fog = new THREE.Fog( new THREE.Color("hsl(238, 57%, 10%)"),90, 100 );
    }
