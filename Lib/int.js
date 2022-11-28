@@ -48,8 +48,8 @@ function init() {
    }
    function CreateCamera()
    {
-	threeCore.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 220 );
-				threeCore.camera.position.set( - 1.8, 20, 40 );
+	threeCore.camera = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 0.02, 220 );
+				threeCore.camera.position.set( - 1.8, 20, 80 );
 				
 			//	threeCore.scene.fog = new THREE.Fog( new THREE.Color("hsl(238, 57%, 10%)"),90, 100 );
    }
@@ -76,8 +76,8 @@ function init() {
    {
 	threeCore.controls = new OrbitControls(  window.threeCore.camera,  window.threeCore.renderer.domElement );
 				threeCore.controls.addEventListener( 'change', render ); // use if there is no animation loop
-				threeCore.controls.minDistance = 10;
-				threeCore.controls.maxDistance = 80;
+				threeCore.controls.minDistance = 15;
+				threeCore.controls.maxDistance = 30;
 				
 				threeCore.controls.maxPolarAngle = Math.PI / 2;
 				threeCore.controls.target.set( 0, 3, 0);

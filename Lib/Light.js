@@ -2,7 +2,7 @@ export function CreateHemiLight()
 {
     const hemiLight = new window.threeCore.THREE.HemisphereLight( 0x6FD8FF, 0x444444 );
 hemiLight.position.set( 0, 30,30 );
-hemiLight.intensity =(0.87);
+hemiLight.intensity =(1.5);
 return  hemiLight;
 }
 
@@ -13,10 +13,10 @@ export function CreateDirectionalLight(pos={x:1, y:1, z:1},color=0xffff,intensit
         'castShadow': true,
         'near': 0.1,
         'far': 500,
-        'right': 30,
-        'left': -30,
-        'top': 30,
-        'bottom': -30,
+        'right': 60,
+        'left': -60,
+        'top': 60,
+        'bottom': -60,
         'width': 512,
         'height': 512,
         'radius': 1,

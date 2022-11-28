@@ -26,6 +26,7 @@ export async function LoadAnimated( URL,pos=[0,0,0],castShadow =true){
          {
             object.castShadow = true;
             object.receiveShadow = true;
+        
             console.log("boj shadow : "+  object.castShadow);
         }
 
@@ -39,8 +40,12 @@ export async function LoadAnimated( URL,pos=[0,0,0],castShadow =true){
 
        if(gltf.animations. length>=1){
       let  mixer =  new window.threeCore.THREE.AnimationMixer( gltf.scene );
+     for (let i = 0; i < gltf.animations.length; i++) {
+      mixer.clipAction(gltf.animations[i]).play();
       
-        mixer.clipAction( gltf.animations[ 0 ] ).play();
+     }
+       // mixer.clipAction( gltf.animations[ 0 ] ).play();
+       // mixer.clipAction( gltf.animations[ 1 ] ).play();
         threeCore.MixerList.push(mixer);
       }
         
@@ -87,7 +92,8 @@ export async function LoadSLid( URL,castShadow =true){
      if(gltf.animations. length>=1){
     let  mixer =  new window.threeCore.THREE.AnimationMixer( gltf.scene );
     
-      mixer.clipAction( gltf.animations[ 0 ] ).play();
+     // mixer.clipAction( gltf.animations[ 0 ] ).play();
+      mixer.clipAction( gltf.animations[ 2 ] ).play();
       threeCore.MixerList.push(mixer);
     }
       
