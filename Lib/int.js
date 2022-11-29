@@ -59,8 +59,10 @@ function init() {
 	threeCore.renderer = new THREE.WebGLRenderer( { antialias: true , alpha: true  } );
 	threeCore.renderer.setPixelRatio( window.devicePixelRatio );
 	threeCore.renderer.setSize( window.innerWidth, window.innerHeight );
+	threeCore.renderer.physicallyCorrectLights = true;
 	threeCore.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-	threeCore.renderer.toneMappingExposure = 1;
+	threeCore.renderer.toneMappingExposure = 0.01;
+	threeCore.renderer.gammaFactor = 2;
 	threeCore.renderer.outputEncoding = THREE.sRGBEncoding;
 	threeCore.renderer.shadowMap.enabled = true;
 	threeCore.renderer.shadowMap.type = THREE.PCFSoftShadowMap;

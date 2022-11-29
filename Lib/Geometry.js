@@ -8,7 +8,7 @@ circle.receiveShadow = true;
 }
 export function CreateGroundPlan(size_x=5000,size_y=5000)
 {
-    const mesh = new window.threeCore.THREE.Mesh( new window.threeCore.THREE.PlaneGeometry( size_x,size_y ), new window.threeCore.THREE.MeshStandardMaterial( { color: new threeCore.THREE.Color( "hsl(278, 20%, 70%)"),roughness :1, depthWrite: false } ) );
+    const mesh = new window.threeCore.THREE.Mesh( new window.threeCore.THREE.PlaneGeometry( size_x,size_y ), new window.threeCore.THREE.MeshStandardMaterial( { color: new threeCore.THREE.Color( "hsl(278, 20%, 50%)"),roughness :1, depthWrite: false } ) );
 				mesh.rotation.x = - Math.PI / 2;
 				mesh.receiveShadow = true;
                 return mesh;

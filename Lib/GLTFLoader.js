@@ -17,7 +17,7 @@ export function LoadStatic(URL){
 export async function LoadAnimated( URL,pos=[0,0,0],castShadow =true){
    
     let loader = await new GLTFLoader();
-    loader.load( URL, function ( gltf ) {
+   await loader.load( URL, function ( gltf ) {
        const model =  gltf.scene;
       
        model.traverse( function ( object ) {
@@ -63,7 +63,7 @@ export async function LoadAnimated( URL,pos=[0,0,0],castShadow =true){
    
    
 }
-export async function LoadSLid( URL,castShadow =true){
+export async function LoadCompressedAnimated( URL,pos=[0,0,0],castShadow =true){
    
   let loader = await new GLTFLoader();
   loader.load( URL, function ( gltf ) {
@@ -75,25 +75,26 @@ export async function LoadSLid( URL,castShadow =true){
        {
           object.castShadow = true;
           object.receiveShadow = true;
-          
+      
+          console.log("boj shadow : "+  object.castShadow);
       }
 
   } );
 
-     let pos =getSlidPotion();
-     let Slid = {posArray:pos}
+     
      model.position.set(pos[0],pos[1],pos[2]);
-     Slids.push(Slid);
-     console.log(pos[0],pos[1],pos[2]);
       
      window.threeCore.scene.add( model );
      
 
      if(gltf.animations. length>=1){
     let  mixer =  new window.threeCore.THREE.AnimationMixer( gltf.scene );
+   for (let i = 0; i < gltf.animations.length; i++) {
+    mixer.clipAction(gltf.animations[i]).play();
     
+   }
      // mixer.clipAction( gltf.animations[ 0 ] ).play();
-      mixer.clipAction( gltf.animations[ 2 ] ).play();
+     // mixer.clipAction( gltf.animations[ 1 ] ).play();
       threeCore.MixerList.push(mixer);
     }
       
@@ -108,7 +109,10 @@ export async function LoadSLid( URL,castShadow =true){
 
 }, );
 
+ 
+ 
 }
+
 export function increseSlidNumber()
 { 
  let totalSliders =0;
