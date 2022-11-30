@@ -5,14 +5,14 @@ import * as THREE from 'three';
 import { EffectComposer } from 'https://unpkg.com/three@0.146.0/examples/jsm/postprocessing/EffectComposer.js';
 import { OrbitControls } from 'three/addon/controls/OrbitControls.js';
 import Stats from 'https://unpkg.com/three@0.146.0/examples/jsm/libs/stats.module.js';
+//import Stats from 'https://unpkg.com/three@0.146.0/examples/jsm/libs/stats.module.js';
 const stats = new Stats();
 const clock = new THREE.Clock();
 window.threeCore ={}
 window.threeCore.THREE=THREE;
 export const platform =  getMobileOperatingSystem();
-
+window.threeCore.manager = new window.threeCore.THREE.LoadingManager();
 window.threeCore.MixerList=[];
-
 
 
 			init();
@@ -25,7 +25,8 @@ function init() {
 			
 				const NextBUT = document.createElement( 'button' );
 				document.body.appendChild( container );
-
+				
+				container.appendChild( stats.dom );
 
 
 				
@@ -41,16 +42,63 @@ function init() {
 			}
 
 
-function getMobileOperatingSystem() {
-	var platform = ["Win32", "Android", "iOS"];
+const bar = document.getElementById("progress-bar");
+const loadinscreen = document.getElementById("LoadingScreen");
 
-	for (var i = 0; i < platform.length; i++) {
- 
-		if (navigator.platform.indexOf(platform[i]) >- 1) {
- 
-			return platform[i];
-		}
-	}
+			window.threeCore.manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
+
+				console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+			
+			};
+			
+			window.threeCore.manager.onLoad = function ( ) {
+			
+				console.log( 'Loading complete!');
+				loadinscreen.style.display ="none";
+				bar.style.display ="none";
+			
+			};
+			
+			
+			window.threeCore.manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+			
+				//console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+				console.log( 'Loading '+ ((itemsLoaded / itemsTotal)*100) + ' %' );
+				bar.value = (itemsLoaded / itemsTotal)*100;
+			};
+			
+			window.threeCore.manager.onError = function ( url ) {
+			
+				console.log( 'There was an error loading ' + url );
+			
+			};
+			
+			
+
+
+
+
+function getMobileOperatingSystem() {
+	var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    // Windows Phone must come first because its UA also contains "Android"
+	
+    if (/windows phone/i.test(userAgent)) {
+        return "Windows Phone";
+    }
+
+    if (/android/i.test(userAgent)) {
+        return "Android";
+    }
+
+    // iOS detection from: http://stackoverflow.com/a/9039885/177710
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return "iOS";
+    }
+
+    return "PC";
+
+
 	}
 
    function CreateScene()

@@ -1,0 +1,40 @@
+#LoadingScreen {
+    position: absolute;
+    /* left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    background-color: rgb(31, 88, 187);
+}
+#progress-bar {
+    width: 30%;
+    top: -0.5%;
+    height: 2%;
+
+}
+#container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+}
+#AR_BT {
+    position: absolute;
+    bottom: 30px;
+    right:50%;
+    height: 50px;
+    width: 80px;
+}
+#canvas {
+    position: absolute;
+    
+    
+  }

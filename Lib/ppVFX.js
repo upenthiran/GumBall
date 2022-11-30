@@ -23,7 +23,7 @@ const effectController = {
 
 
 const renderScene = new RenderPass( window.threeCore.scene,  window.threeCore.camera );
-const gui = new GUI();
+//const gui = new GUI();
 
 
 export function PPVFX_Bloom(edit =false){  

@@ -4,23 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            color: #222;
-            background-color: azure;
-        }
-
-        a {
-            color: #2fa1d6;
-        }
-
-        p {
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0 2em;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css" />
     <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
     <script type="importmap">
         {
@@ -33,13 +17,14 @@
    
 </head>
 <body>
+
     <div id="container">
-        
+        <div id="LoadingScreen">
+        <progress id="progress-bar" value="0" max="100"></progress>
+        </div>
+        <button type="button" id ="AR_BT">Click Me!</button><br>
     </div>
-    <button type="button" id ="NextBTN">Click Me!</button><br>
-    <a href="Model/AR/AR-ios.usdz">IOS AR <br></a>
-    <a href="intent://arvr.google.com/scene-viewer/1.0?file=http://192.168.1.86:8080/Model/AR/AR-and.gltf#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;">Avocado<br></a>
-    
+   
    
     <script type="module" src="./runTime.js">
       

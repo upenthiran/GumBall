@@ -5,6 +5,12 @@ import * as GEO from './Lib/Geometry.js';
 import * as Lights from './Lib/Light.js';
 import * as PPVFX from './Lib/ppVFX.js';
 
+const listOfPPLGroup = [
+    "Model/talk_Group/GP0.gltf",
+    "Model/talk_Group/GP1.gltf",
+    "Model/talk_Group/GP2.gltf",
+]
+Arbutton();
 console.log(int.platform);
 CreateLigting();
 crateModel();
@@ -56,8 +62,36 @@ function CrateEnvironment(){
 
 function crateModel()
 {
+    GLTFLOADER.LoadCompressedAnimated('Model/chrismas_Card/test2.gltf',[0,-0,0]);
 
-    GLTFLOADER.LoadAnimated('Model/chrismas_Card/test2.gltf',[0,-0,0]);
+   /*  if(int.platform!=="Win32"){
+        listOfPPLGroup.forEach(path => {
+            GLTFLOADER.LoadCompressedAnimated(path,[0,0,0]);
+            
+        });
+    }else{ */
+        const randomIndex = Math.floor(Math.random() * listOfPPLGroup.length);
+        console.log(randomIndex);
+        GLTFLOADER.LoadCompressedAnimated(listOfPPLGroup[randomIndex],[0,0,0]);
+        
 
-    GLTFLOADER.LoadCompressedAnimated('Model/talk_Group/GP0.glb',[0,0,0]);
+ //   }
+   
+}
+function Arbutton(){
+    const AR_button = document.getElementById('AR_BT');
+    AR_button.textContent = int.platform;
+    AR_button.addEventListener("click", function() {
+    if(int.platform==="Android")
+    {
+      
+      
+           window.location = "intent://arvr.google.com/scene-viewer/1.0?file=http://192.168.1.86:8080/Model/AR/AR-and.gltf#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;"
+        
+    }else if(int.platform==="iOS"){
+        window.location ="Model/AR/AR-ios.usdz";
+    }else{
+        window.location ="https://www.google.com.au/"
+    }
+});
 }

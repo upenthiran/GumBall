@@ -1,5 +1,7 @@
 import { GLTFLoader } from 'https://unpkg.com/three@0.146.0/examples/jsm/loaders/GLTFLoader.js';
-
+import { DRACOLoader } from 'https://unpkg.com/three@0.146.0/examples/jsm/loaders/DRACOLoader'
+let modelLoaded =0;
+let modelloading =0;
  var Slids =[];
 
 var SlidNumber=0;
@@ -15,8 +17,13 @@ export function LoadStatic(URL){
     } );
 }
 export async function LoadAnimated( URL,pos=[0,0,0],castShadow =true){
-   
+ // totalLoadIdem++;
+  const dracoLoader = new DRACOLoader();
+  dracoLoader.setDecoderPath('./Model/cash/')
+  
     let loader = await new GLTFLoader();
+    loader.setDRACOLoader(dracoLoader)
+    
    await loader.load( URL, function ( gltf ) {
        const model =  gltf.scene;
       
@@ -56,7 +63,7 @@ export async function LoadAnimated( URL,pos=[0,0,0],castShadow =true){
     },
     function ( xhr ) {
 
-	//	console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
 
 	}, );
 
@@ -64,8 +71,10 @@ export async function LoadAnimated( URL,pos=[0,0,0],castShadow =true){
    
 }
 export async function LoadCompressedAnimated( URL,pos=[0,0,0],castShadow =true){
-   
-  let loader = await new GLTFLoader();
+ // totalLoadIdem++;
+ let given = false;
+
+  let loader = await new GLTFLoader(window.threeCore.manager);
   loader.load( URL, function ( gltf ) {
      const model =  gltf.scene;
     
@@ -104,31 +113,27 @@ export async function LoadCompressedAnimated( URL,pos=[0,0,0],castShadow =true){
       
   },
   function ( xhr ) {
-
+    if(!given){
+      modelLoaded++;
+      
+      given =true;
+    }
+    modelloading += ( xhr.loaded / xhr.total * 100 );
   //console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+  console.log( modelloading );
+  console.log( modelLoaded );
+ 
 
-}, );
+},
+console.log( "LOAded " )
+
+);
 
  
  
 }
 
-export function increseSlidNumber()
-{ 
- let totalSliders =0;
- totalSliders =Slids.length;
 
-  if(totalSliders>0){
-   let tempSlidnumber = (SlidNumber+1)% totalSliders;
-    SlidNumber=tempSlidnumber;
-
-  }else{
-    SlidNumber=0;
-  }
-  console.log(SlidNumber);
-  return Slids[SlidNumber];
-
-}
 function getSlidPotion(){
   let pos = [(Slids.length *20), 0, 0];
   return pos;
