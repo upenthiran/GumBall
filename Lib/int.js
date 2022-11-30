@@ -9,7 +9,7 @@ const stats = new Stats();
 const clock = new THREE.Clock();
 window.threeCore ={}
 window.threeCore.THREE=THREE;
-
+export const platform =  getMobileOperatingSystem();
 
 window.threeCore.MixerList=[];
 
@@ -18,6 +18,7 @@ window.threeCore.MixerList=[];
 			init();
 			//render();
 			window.RenderFrame
+			//console.log( getMobileOperatingSystem());
 
 function init() {
 
@@ -38,6 +39,19 @@ function init() {
 				window.addEventListener( 'resize', onWindowResize );
 
 			}
+
+
+function getMobileOperatingSystem() {
+	var platform = ["Win32", "Android", "iOS"];
+
+	for (var i = 0; i < platform.length; i++) {
+ 
+		if (navigator.platform.indexOf(platform[i]) >- 1) {
+ 
+			return platform[i];
+		}
+	}
+	}
 
    function CreateScene()
    {
@@ -103,11 +117,11 @@ export function animate( ) {
 				
 				threeCore.renderer.render(  threeCore.scene,  threeCore.camera );
 				window.composer.render();
-				console.log('render composer');
+				//console.log('render composer');
 
 }
 
-		function onWindowResize() {
+function onWindowResize() {
 
 				threeCore.camera.aspect = window.innerWidth / window.innerHeight;
 				threeCore.camera.updateProjectionMatrix();
@@ -119,7 +133,7 @@ export function animate( ) {
 			}
 
 
-     	function render() {
+function render() {
 
 				window.threeCore.renderer.render(  window.threeCore.scene,  window.threeCore.camera );
 

@@ -27,7 +27,7 @@ export async function LoadAnimated( URL,pos=[0,0,0],castShadow =true){
             object.castShadow = true;
             object.receiveShadow = true;
         
-            console.log("boj shadow : "+  object.castShadow);
+           // console.log("boj shadow : "+  object.castShadow);
         }
 
     } );
@@ -56,7 +56,7 @@ export async function LoadAnimated( URL,pos=[0,0,0],castShadow =true){
     },
     function ( xhr ) {
 
-		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+	//	console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
 
 	}, );
 
@@ -105,7 +105,7 @@ export async function LoadCompressedAnimated( URL,pos=[0,0,0],castShadow =true){
   },
   function ( xhr ) {
 
-  console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+  //console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
 
 }, );
 
